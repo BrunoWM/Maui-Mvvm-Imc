@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiMvvmImc.Mvvm.Views.ImcView"
+             Title="ImcView">
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Row="0"
+            Text="IMC MVVM app"
+            FontSize="30"
+            FontAttributes="Bold"
+            HorizontalTextAlignment="Center"
+            VerticalTextAlignment="Center"/>
+       
+
+        <Frame Grid.Row="1"
+            CornerRadius="10"
+            Margin="5"
+            BackgroundColor="LightBlue">
+
+            <VerticalStackLayout>
+                <Label Text="Sua altura: "
+                       FontSize="20"
+                       HorizontalOptions="Center"/>
+                <Label Text="{Binding Source={x:Reference SliderAltura}, 
+                    Path=Value, StringFormat='{0:F0} cm'}"/>
+                <Slider 
+                    x:Name="SliderAltura"
+                    Maximum="300"
+                    Minimum="0"
+                    Value="{Binding Altura}"/>
+            </VerticalStackLayout>
+        </Frame>
+        
+        <Frame Grid.Row="2"
+            CornerRadius="10"
+            Margin="5"
+            BackgroundColor="LightBlue">
+
+            <VerticalStackLayout>
+                <Label Text="Seu peso: "
+                       FontSize="20"
+                       HorizontalOptions="Center"/>
+                <Label Text="{Binding Source={x:Reference SliderPeso}, 
+                    Path=Value, StringFormat='{0:F0} Kg'}"/>
+                <Slider 
+                    x:Name="SliderPeso"
+                    Maximum="350"
+                    Minimum="0"
+                    Value="{Binding Peso}"/>
+            </VerticalStackLayout>
+        </Frame>
+
+        <Frame Grid.Row="3"
+            CornerRadius="10"
+            Margin="10, 10, 10, 30"
+            BackgroundColor="LightBlue">
+
+            <VerticalStackLayout>
+                <Label Text="Seu IMC é: "
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"/>
+                <Label Text="{Binding Imc}"
+                       FontSize="30"
+                       HorizontalOptions="Center"/>
+                <Label Text="{Binding Classificacao}"
+                       FontSize="30"
+                       FontAttributes="Bold"
+                       TextColor="Purple"
+                       HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+        </Frame>
+    </Grid>
+</ContentPage>
